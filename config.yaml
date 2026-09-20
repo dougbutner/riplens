@@ -1,0 +1,43 @@
+# RipLens — edit this, not the code, for most sessions.
+# HSV and effect recipes live in skills/glitch-visualizer/SKILL.md.
+# If you change mapping math in riplens/, update that skill in the same commit.
+
+sources:
+  music: sources/music
+  images: sources/images
+  videos: sources/videos
+
+output:
+  root: output
+  ratios:
+    1x1:  { width: 1080, height: 1080 }
+    16x9: { width: 1920, height: 1080 }
+    9x16: { width: 1080, height: 1920 }
+
+fps: 30
+threshold: 0.62
+cooldown: 1.2
+ken_burns: 0.08
+
+hsv:
+  hue_from: centroid
+  sat_from: mid
+  val_from: rms
+
+effects:
+  - kaleidoscope
+  - chromatic
+  - scanline
+  - pixel_sort
+  - block_corrupt
+  - fractal
+  - hsv_geometry
+  - blend
+  - lens_peel
+  - feedback
+
+codec:
+  video: auto          # auto | h264_nvenc | libx264
+  crf: 18
+  audio_bitrate: 192k
+  preset: fast

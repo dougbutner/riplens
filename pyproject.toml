@@ -1,0 +1,27 @@
+[project]
+name = "riplens"
+version = "1.0.0"
+description = "Local glitch music-video studio. Your songs + your art → 1:1, 16:9, and 9:16 H.264. No AI, no APIs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "RipLens" }]
+dependencies = [
+  "numpy>=1.26",
+  "opencv-python-headless>=4.9",
+  "librosa>=0.10",
+  "soundfile>=0.12",
+  "pyyaml>=6.0",
+  "tqdm>=4.66",
+  "imageio-ffmpeg>=0.5",
+]
+
+[project.scripts]
+riplens = "riplens.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["riplens*"]
