@@ -6,13 +6,12 @@ import shutil
 import subprocess
 from pathlib import Path
 
-import imageio_ffmpeg
-
-
 def ffmpeg_bin() -> str:
     found = shutil.which("ffmpeg")
     if found:
         return found
+    import imageio_ffmpeg
+
     return imageio_ffmpeg.get_ffmpeg_exe()
 
 

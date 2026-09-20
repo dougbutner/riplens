@@ -1,4 +1,4 @@
-"""The ten RipLens looks. OpenCV + NumPy only. No generative models.
+"""The 22 RipLens looks. OpenCV + NumPy only. No generative models.
 
 When you change a recipe here, update skills/glitch-visualizer/SKILL.md
 in the same commit. That file is the copyable pattern.
@@ -11,7 +11,7 @@ from typing import Callable
 import cv2
 import numpy as np
 
-from riplens.audio import FrameFeat
+from riplens.feat import FrameFeat
 
 BlendFn = Callable[[np.ndarray, FrameFeat, float, "EffectState"], np.ndarray]
 
@@ -57,7 +57,7 @@ def cover(img: np.ndarray, w: int, h: int, zoom: float = 1.0) -> np.ndarray:
 
 def kaleidoscope(img: np.ndarray, feat: FrameFeat, t: float, st: EffectState) -> np.ndarray:
     h, w = img.shape[:2]
-    segments = int(6 + feat.bass * 10)
+    segments = int(6 + (t * 0.55 + feat.bass * 8) % 11)
     segments = max(4, segments)
     if st._grid is None or st._grid[0] != h or st._grid[1] != w:
         yy, xx = np.indices((h, w), dtype=np.float32)
@@ -196,6 +196,8 @@ def hsv_geometry(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -
     cols, rows = 7, 9
     gw, gh = w / cols, h / rows
     pulse = 0.35 + feat.v * 0.7
+    sides = 3 + int((t * 0.4 + feat.bass * 3) % 6)
+    rot = t * 0.35
     for row in range(rows):
         ox = 0 if row % 2 == 0 else gw / 2
         for col in range(cols):
@@ -204,7 +206,7 @@ def hsv_geometry(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -
             hue = (feat.h + col * 18 + row * 8) % 360
             color = hsv_to_bgr(hue, feat.s, feat.v)
             r = int(gw * 0.42 * pulse)
-            pts = _hex(x, y, r)
+            pts = _ngon(x, y, r, max(3, sides), rot)
             cv2.fillConvexPoly(overlay, pts, color)
             cv2.polylines(overlay, [pts], True, (240, 235, 220), 1, cv2.LINE_AA)
     mixed = cv2.addWeighted(out, 0.7, overlay, 0.45, 0)
@@ -218,10 +220,10 @@ def hsv_geometry(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -
     return mixed
 
 
-def _hex(x: int, y: int, r: int) -> np.ndarray:
+def _ngon(x: int, y: int, r: int, n: int, rot: float) -> np.ndarray:
     pts = []
-    for i in range(6):
-        a = i * np.pi / 3
+    for i in range(max(3, n)):
+        a = rot + i * 2 * np.pi / max(3, n)
         pts.append([int(x + r * np.cos(a)), int(y + r * np.sin(a))])
     return np.array(pts, dtype=np.int32)
 
@@ -293,23 +295,339 @@ def feedback(img: np.ndarray, feat: FrameFeat, _t: float, st: EffectState) -> np
 
 
 def geometry_overlay(img: np.ndarray, feat: FrameFeat, t: float) -> np.ndarray:
-    out = img.copy()
-    h, w = img.shape[:2]
-    cx, cy = w // 2, h // 2
-    r = int(min(w, h) * (0.18 + feat.v * 0.22))
-    color = hsv_to_bgr(feat.h, min(1.0, feat.s + 0.1), 1.0)
-    cv2.circle(out, (cx, cy), r, color, 1, cv2.LINE_AA)
-    for i in range(6):
-        a = i / 6 * np.pi * 2 + t * 0.2
-        x2 = int(cx + np.cos(a) * r * 1.4)
-        y2 = int(cy + np.sin(a) * r * 1.4)
-        cv2.line(out, (cx, cy), (x2, y2), color, 1, cv2.LINE_AA)
-    return out
+    """Deprecated no-op. The six-spoke wheel was removed."""
+    return img
 
 
 def grain(img: np.ndarray, amount: float = 12.0) -> np.ndarray:
     noise = np.random.default_rng(None).normal(0, amount, img.shape).astype(np.float32)
     return np.clip(img.astype(np.float32) + noise, 0, 255).astype(np.uint8)
+
+
+PHI = (1 + np.sqrt(5)) / 2
+INV = 1 / PHI
+
+
+def _edges(verts: np.ndarray, slack: float = 1.12) -> list[tuple[int, int]]:
+    d = np.sqrt(((verts[:, None, :] - verts[None, :, :]) ** 2).sum(-1))
+    np.fill_diagonal(d, np.inf)
+    m = float(d.min())
+    ii, jj = np.where(np.triu(d <= m * slack, 1))
+    return list(zip(ii.tolist(), jj.tolist()))
+
+
+def _mesh(kind: str) -> tuple[np.ndarray, list[tuple[int, int]]]:
+    if kind == "tetra":
+        v = np.array([[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]], dtype=np.float32)
+        return v, _edges(v, 1.05)
+    if kind == "cube":
+        v = np.array([[x, y, z] for x in (-1, 1) for y in (-1, 1) for z in (-1, 1)], dtype=np.float32)
+        return v, _edges(v, 1.05)
+    if kind == "octa":
+        v = np.array([[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]], dtype=np.float32)
+        return v, _edges(v, 1.05)
+    if kind == "icosa":
+        pts = []
+        for s in (-1, 1):
+            for t in (-1, 1):
+                pts.append([0, s, t * PHI])
+                pts.append([s, t * PHI, 0])
+                pts.append([t * PHI, 0, s])
+        v = np.array(pts, dtype=np.float32)
+        return v, _edges(v, 1.08)
+    if kind == "dodeca":
+        pts = [[x, y, z] for x in (-1, 1) for y in (-1, 1) for z in (-1, 1)]
+        for s in (-1, 1):
+            for t in (-1, 1):
+                pts.append([0, s * INV, t * PHI])
+                pts.append([s * INV, t * PHI, 0])
+                pts.append([t * PHI, 0, s * INV])
+        v = np.array(pts, dtype=np.float32)
+        return v, _edges(v, 1.08)
+    a, e = _mesh("tetra")
+    b = -a
+    verts = np.vstack([a, b])
+    edges = e + [(i + 4, j + 4) for i, j in e]
+    return verts, edges
+
+
+def _rotate(v: np.ndarray, ax: float, ay: float, az: float) -> np.ndarray:
+    cx, sx = np.cos(ax), np.sin(ax)
+    cy, sy = np.cos(ay), np.sin(ay)
+    cz, sz = np.cos(az), np.sin(az)
+    x, y, z = v[:, 0], v[:, 1], v[:, 2]
+    y, z = y * cx - z * sx, y * sx + z * cx
+    x, z = x * cy + z * sy, -x * sy + z * cy
+    x, y = x * cz - y * sz, x * sz + y * cz
+    return np.stack([x, y, z], axis=1)
+
+
+def _project(v: np.ndarray, cx: float, cy: float, radius: float) -> np.ndarray:
+    z = v[:, 2] + 3.2
+    f = radius / z
+    return np.stack([cx + v[:, 0] * f, cy + v[:, 1] * f], axis=1)
+
+
+def _stroke_solid(
+    canvas: np.ndarray, kind: str, cx: float, cy: float, radius: float, ax: float, ay: float, az: float, color: tuple[int, int, int], thick: int
+) -> None:
+    verts, edges = _mesh(kind)
+    pts = _project(_rotate(verts, ax, ay, az), cx, cy, radius)
+    for i, j in edges:
+        p0 = tuple(np.round(pts[i]).astype(int))
+        p1 = tuple(np.round(pts[j]).astype(int))
+        cv2.line(canvas, p0, p1, color, thick, cv2.LINE_AA)
+
+
+def _screen(base: np.ndarray, overlay: np.ndarray) -> np.ndarray:
+    return (255 - cv2.multiply(255 - base, 255 - overlay, scale=1 / 255.0)).astype(np.uint8)
+
+
+SOLID_CYCLE = ("tetra", "cube", "octa", "icosa", "dodeca", "merkaba")
+
+
+def vortex(img: np.ndarray, feat: FrameFeat, t: float, st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    if st._grid is None or st._grid[0] != h or st._grid[1] != w:
+        yy, xx = np.indices((h, w), dtype=np.float32)
+        cy, cx = h / 2.0, w / 2.0
+        dx, dy = xx - cx, yy - cy
+        r = np.sqrt(dx * dx + dy * dy)
+        st._grid = (h, w, yy, xx, r, cx, cy)
+    _, _, yy, xx, r, cx, cy = st._grid
+    rmax = float(np.hypot(cx, cy))
+    twist = 1.8 + feat.rms * 3.4
+    fall = (1.0 - np.clip(r / rmax, 0, 1)) ** 2
+    theta = np.arctan2(yy - cy, xx - cx) + twist * fall + t * 0.25
+    map_x = (cx + r * np.cos(theta)).astype(np.float32)
+    map_y = (cy + r * np.sin(theta)).astype(np.float32)
+    return cv2.remap(img, map_x, map_y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+
+
+def slice_scramble(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    strip = max(6, int(8 + feat.bass * 28))
+    seed = int(t * 2.4)
+    out = img.copy()
+    for x in range(0, w, strip):
+        dw = min(strip, w - x)
+        src_x = (x * 13 + seed * 47) % max(1, w - dw)
+        sl = img[:, src_x : src_x + dw]
+        yoff = int(np.sin(x * 0.03 + t * 5) * h * (0.04 + feat.rms * 0.08))
+        out[:, x : x + dw] = np.roll(sl, yoff, axis=0)
+    return out
+
+
+def vhs(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    ox = int(10 + feat.bass * 24)
+    b, g, r = cv2.split(img)
+    r = np.roll(r, ox, axis=1)
+    b = np.roll(b, -ox, axis=1)
+    out = cv2.merge([b, g, r])
+    tear_y = int((t * 90 % 1.0) * h)
+    tear_h = int(6 + feat.treble * 22)
+    out[tear_y : tear_y + tear_h] = np.roll(out[tear_y : tear_y + tear_h], ox * 3, axis=1)
+    noise = _st_rng_noise(out, 9)
+    out = cv2.addWeighted(out, 0.92, noise, 0.08, 0)
+    out[::3] = (out[::3] * 0.82).astype(np.uint8)
+    return out
+
+
+def _st_rng_noise(img: np.ndarray, sigma: float) -> np.ndarray:
+    n = np.random.default_rng(None).normal(128, sigma, img.shape)
+    return np.clip(n, 0, 255).astype(np.uint8)
+
+
+def wave_warp(img: np.ndarray, feat: FrameFeat, t: float, st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    if st._grid is None or st._grid[0] != h or st._grid[1] != w:
+        yy, xx = np.indices((h, w), dtype=np.float32)
+        cy, cx = h / 2.0, w / 2.0
+        r = np.sqrt((xx - cx) ** 2 + (yy - cy) ** 2)
+        st._grid = (h, w, yy, xx, r, cx, cy)
+    _, _, yy, xx, *_rest = st._grid
+    ax = 10 + feat.rms * 36
+    ay = 8 + feat.mid * 28
+    map_x = (xx + np.sin(yy * 0.045 + t * 6) * ax).astype(np.float32)
+    map_y = (yy + np.cos(xx * 0.035 + t * 4.2) * ay).astype(np.float32)
+    return cv2.remap(img, map_x, map_y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+
+
+def neon_edge(img: np.ndarray, feat: FrameFeat, _t: float, _st: EffectState) -> np.ndarray:
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gx = cv2.Sobel(gray, cv2.CV_32F, 1, 0, ksize=3)
+    gy = cv2.Sobel(gray, cv2.CV_32F, 0, 1, ksize=3)
+    mag = np.clip(np.hypot(gx, gy) * (0.8 + feat.rms), 0, 255).astype(np.uint8)
+    color = hsv_to_bgr(feat.h, 0.85, 1.0)
+    tint = np.full_like(img, color)
+    mag3 = cv2.merge([mag, mag, mag])
+    glow = cv2.multiply(tint, mag3, scale=1 / 255.0)
+    return _screen(img, glow)
+
+
+def fisheye(img: np.ndarray, feat: FrameFeat, _t: float, st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    if st._grid is None or st._grid[0] != h or st._grid[1] != w:
+        yy, xx = np.indices((h, w), dtype=np.float32)
+        cy, cx = h / 2.0, w / 2.0
+        r = np.sqrt((xx - cx) ** 2 + (yy - cy) ** 2)
+        st._grid = (h, w, yy, xx, r, cx, cy)
+    _, _, yy, xx, r, cx, cy = st._grid
+    rmax = float(np.hypot(cx, cy))
+    k = 0.55 + feat.bass * 0.85
+    rn = r / rmax
+    r2 = rmax * (rn + k * rn * rn * rn)
+    ang = np.arctan2(yy - cy, xx - cx)
+    map_x = (cx + np.cos(ang) * r2).astype(np.float32)
+    map_y = (cy + np.sin(ang) * r2).astype(np.float32)
+    return cv2.remap(img, map_x, map_y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+
+
+def zoom_streak(img: np.ndarray, feat: FrameFeat, _t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    out = img.astype(np.float32)
+    acc = out.copy()
+    n = 9
+    for i in range(1, n + 1):
+        s = 1 + i * (0.035 + feat.rms * 0.04)
+        nw, nh = int(w * s), int(h * s)
+        scaled = cv2.resize(img, (nw, nh), interpolation=cv2.INTER_LINEAR)
+        x = (nw - w) // 2
+        y = (nh - h) // 2
+        crop = scaled[y : y + h, x : x + w]
+        if crop.shape[:2] != (h, w):
+            crop = cv2.resize(crop, (w, h))
+        acc += crop.astype(np.float32) * (0.08)
+    return np.clip(acc, 0, 255).astype(np.uint8)
+
+
+def mosaic(img: np.ndarray, feat: FrameFeat, _t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    cell = max(6, int(8 + feat.rms * 36))
+    small = cv2.resize(img, (max(4, w // cell), max(4, h // cell)), interpolation=cv2.INTER_LINEAR)
+    return cv2.resize(small, (w, h), interpolation=cv2.INTER_NEAREST)
+
+
+def _draw_on_plate(img: np.ndarray, draw) -> np.ndarray:
+    out = cv2.convertScaleAbs(img, alpha=0.72, beta=0)
+    overlay = np.zeros_like(out)
+    draw(overlay)
+    halo = cv2.dilate(overlay, np.ones((3, 3), np.uint8))
+    dark = np.clip(out.astype(np.int16) - (halo > 0).astype(np.int16) * 70, 0, 255).astype(np.uint8)
+    return cv2.add(dark, overlay)
+
+
+def solids(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    kind = SOLID_CYCLE[int(t * 0.38 + feat.bass * 2) % len(SOLID_CYCLE)]
+    color = hsv_to_bgr(feat.h, min(1.0, feat.s + 0.15), 1.0)
+    cx, cy = w / 2, h / 2
+    R = min(w, h) * (0.28 + feat.v * 0.12)
+
+    def draw(overlay: np.ndarray) -> None:
+        _stroke_solid(overlay, kind, cx, cy, R, t * 0.7, t * 0.45, feat.bass, color, 2)
+        orbit = min(w, h) * 0.34
+        for i in range(3):
+            a = t * 0.55 + i * 2 * np.pi / 3
+            k = SOLID_CYCLE[(SOLID_CYCLE.index(kind) + i + 1) % len(SOLID_CYCLE)]
+            _stroke_solid(
+                overlay,
+                k,
+                cx + np.cos(a) * orbit,
+                cy + np.sin(a) * orbit * 0.72,
+                R * 0.28,
+                t * 1.1 + i,
+                t * 0.8,
+                i,
+                color,
+                1,
+            )
+
+    return _draw_on_plate(img, draw)
+
+
+def flower(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    color = hsv_to_bgr(feat.h, min(1.0, feat.s + 0.1), 1.0)
+    cx, cy = w // 2, h // 2
+    R = int(min(w, h) * (0.11 + feat.v * 0.04))
+    centers = [(cx, cy)]
+    for ring, n, off in ((1, 6, 0.0), (2, 12, np.pi / 12)):
+        for i in range(n):
+            a = off + i * 2 * np.pi / n
+            centers.append((int(cx + np.cos(a) * ring * R), int(cy + np.sin(a) * ring * R)))
+
+    def draw(overlay: np.ndarray) -> None:
+        for x, y in centers:
+            cv2.circle(overlay, (x, y), R, color, 2, cv2.LINE_AA)
+        M = cv2.getRotationMatrix2D((cx, cy), np.degrees(t * 0.08), 1.0)
+        rotated = cv2.warpAffine(overlay, M, (w, h), borderMode=cv2.BORDER_CONSTANT)
+        overlay[:, :] = rotated
+
+    return _draw_on_plate(img, draw)
+
+
+def metatron(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    color = hsv_to_bgr(feat.h, min(1.0, feat.s + 0.1), 1.0)
+    cx, cy = w / 2, h / 2
+    R = min(w, h) * (0.12 + feat.rms * 0.03)
+    pts = [(cx, cy)]
+    for ring in (1, 2):
+        for i in range(6):
+            a = i * np.pi / 3
+            pts.append((cx + np.cos(a) * ring * R, cy + np.sin(a) * ring * R))
+
+    def draw(overlay: np.ndarray) -> None:
+        for i in range(len(pts)):
+            for j in range(i + 1, len(pts)):
+                p0 = (int(pts[i][0]), int(pts[i][1]))
+                p1 = (int(pts[j][0]), int(pts[j][1]))
+                cv2.line(overlay, p0, p1, color, 1, cv2.LINE_AA)
+        for x, y in pts:
+            cv2.circle(overlay, (int(x), int(y)), int(R * 0.18), color, 1, cv2.LINE_AA)
+        M = cv2.getRotationMatrix2D((w / 2, h / 2), np.degrees(t * 0.12), 1.0)
+        overlay[:, :] = cv2.warpAffine(overlay, M, (w, h), borderMode=cv2.BORDER_CONSTANT)
+
+    return _draw_on_plate(img, draw)
+
+
+def merkaba(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    h, w = img.shape[:2]
+    color = hsv_to_bgr(feat.h, min(1.0, feat.s + 0.15), 1.0)
+    cx, cy = w / 2, h / 2
+    R = min(w, h) * (0.34 + feat.v * 0.1)
+
+    def draw(overlay: np.ndarray) -> None:
+        _stroke_solid(overlay, "merkaba", cx, cy, R, t * 0.55, t * 0.8, t * 0.2, color, 2)
+        _stroke_solid(overlay, "cube", cx, cy, R * 0.42, t * 0.3, -t * 0.4, 0, color, 1)
+
+    return _draw_on_plate(img, draw)
+
+
+def rgb_prism(img: np.ndarray, feat: FrameFeat, t: float, _st: EffectState) -> np.ndarray:
+    b, g, r = cv2.split(img)
+    lum = 0.299 * r.astype(np.float32) + 0.587 * g.astype(np.float32) + 0.114 * b.astype(np.float32)
+    red = np.clip(r.astype(np.float32) * 0.35 + lum * 0.75, 0, 255).astype(np.uint8)
+    green = np.clip(g.astype(np.float32) * 0.35 + lum * 0.75, 0, 255).astype(np.uint8)
+    cyan_g = np.clip(g.astype(np.float32) * 0.25 + lum * 0.55, 0, 255).astype(np.uint8)
+    cyan_b = np.clip(b.astype(np.float32) * 0.45 + lum * 0.7, 0, 255).astype(np.uint8)
+    z = np.zeros_like(r)
+    ox_r = int(10 + np.sin(t * 1.73) * 9 + feat.bass * 24)
+    oy_r = int(np.sin(t * 1.11) * 4)
+    ox_c = int(-(10 + np.sin(t * 1.31 + 1.1) * 9 + feat.treble * 24))
+    oy_c = int(np.cos(t * 0.97) * 4)
+    ox_g = int(np.sin(t * 0.83) * (3 + feat.mid * 8))
+    oy_g = int(np.sin(t * 2.07) * (5 + feat.mid * 12))
+
+    def shift(ch: np.ndarray, ox: int, oy: int) -> np.ndarray:
+        return np.roll(np.roll(ch, ox, axis=1), oy, axis=0)
+
+    red_img = cv2.merge([z, z, shift(red, ox_r, oy_r)])
+    grn_img = cv2.merge([z, shift(green, ox_g, oy_g), z])
+    cyn_img = cv2.merge([shift(cyan_b, ox_c, oy_c), shift(cyan_g, ox_c, oy_c), z])
+    return np.clip(red_img.astype(np.int16) + grn_img.astype(np.int16) + cyn_img.astype(np.int16), 0, 255).astype(np.uint8)
 
 
 REGISTRY: dict[str, BlendFn] = {
@@ -323,4 +641,17 @@ REGISTRY: dict[str, BlendFn] = {
     "blend": blend,
     "lens_peel": lens_peel,
     "feedback": feedback,
+    "vortex": vortex,
+    "slice_scramble": slice_scramble,
+    "vhs": vhs,
+    "wave_warp": wave_warp,
+    "neon_edge": neon_edge,
+    "fisheye": fisheye,
+    "zoom_streak": zoom_streak,
+    "mosaic": mosaic,
+    "solids": solids,
+    "flower": flower,
+    "metatron": metatron,
+    "merkaba": merkaba,
+    "rgb_prism": rgb_prism,
 }

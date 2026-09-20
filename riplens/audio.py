@@ -2,22 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 import librosa
 import numpy as np
 
-
-@dataclass
-class FrameFeat:
-    rms: float
-    bass: float
-    mid: float
-    treble: float
-    centroid: float
-    h: float
-    s: float
-    v: float
+from riplens.feat import FrameFeat
 
 
 class TrackFeatures:

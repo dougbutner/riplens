@@ -35,6 +35,33 @@ effects:
   - blend
   - lens_peel
   - feedback
+  - vortex
+  - slice_scramble
+  - vhs
+  - wave_warp
+  - neon_edge
+  - fisheye
+  - zoom_streak
+  - mosaic
+  - solids
+  - flower
+  - metatron
+  - merkaba
+  - rgb_prism
+
+overlays:
+  solids: false
+  glyphs: true
+
+# Off by default. `riplens lyrics` writes sources/lyrics/<stem>.srt
+# (edit that file, then render with --subs). Font names resolve inside fonts/.
+subtitles:
+  enabled: false
+  file: auto
+  font: Montserrat-ExtraBold
+  size: 0.052
+  position: bottom
+  margin: 0.09
 
 codec:
   video: auto          # auto | h264_nvenc | libx264

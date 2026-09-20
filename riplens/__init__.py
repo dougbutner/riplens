@@ -13,6 +13,19 @@ EFFECT_ORDER = [
     "blend",
     "lens_peel",
     "feedback",
+    "vortex",
+    "slice_scramble",
+    "vhs",
+    "wave_warp",
+    "neon_edge",
+    "fisheye",
+    "zoom_streak",
+    "mosaic",
+    "solids",
+    "flower",
+    "metatron",
+    "merkaba",
+    "rgb_prism",
 ]
 
 RATIOS = {

@@ -8,10 +8,17 @@ build/
 sources/music/*
 sources/images/*
 sources/videos/*
+sources/lyrics/*
+sources/lyrics/_stems/
 output/**/*.mp4
 !sources/music/.gitkeep
 !sources/images/.gitkeep
 !sources/videos/.gitkeep
+!sources/lyrics/.gitkeep
+!sources/lyrics/README.md
+fonts/**/*.ttf
+fonts/**/*.otf
+fonts/catalog.json
 *.wav
 *.mp3
 *.flac

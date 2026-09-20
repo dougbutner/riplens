@@ -13,9 +13,9 @@ from riplens.effects import (
     REGISTRY,
     EffectState,
     cover,
-    geometry_overlay,
     grain,
 )
+from riplens.glyphs import overlay_glyphs, overlay_solids
 from riplens.ffmpeg import encoder_name, write_cmd
 from riplens.io import (
     list_audio,
@@ -25,6 +25,7 @@ from riplens.io import (
     read_image,
     sample_video_plates,
 )
+from riplens.subtitles import SubtitleRenderer, find_lyrics_file, parse_srt, resolve_font
 
 
 def render_song(
@@ -35,16 +36,40 @@ def render_song(
     height: int,
     cfg: dict,
     encoder: str,
+    root: Path | None = None,
 ) -> None:
     fps = int(cfg.get("fps", 30))
     threshold = float(cfg.get("threshold", 0.62))
     cooldown = float(cfg.get("cooldown", 1.2))
     ken = float(cfg.get("ken_burns", 0.08))
     names: list[str] = cfg.get("effects") or EFFECT_ORDER
+    overlays = cfg.get("overlays") or {}
+    solids_on = bool(overlays.get("solids", False))
+    glyphs_on = bool(overlays.get("glyphs", True))
     codec = cfg.get("codec") or {}
     crf = int(codec.get("crf", 18))
     preset = str(codec.get("preset", "fast"))
     abit = str(codec.get("audio_bitrate", "192k"))
+
+    sub_cfg = cfg.get("subtitles") or {}
+    burner: SubtitleRenderer | None = None
+    if sub_cfg.get("enabled") and root is not None:
+        srt = find_lyrics_file(root, song, cfg)
+        font = resolve_font(root, sub_cfg.get("font"))
+        if srt:
+            cues = parse_srt(srt)
+            if cues:
+                burner = SubtitleRenderer(
+                    cues,
+                    font,
+                    height,
+                    size_frac=float(sub_cfg.get("size", 0.052)),
+                    margin_frac=float(sub_cfg.get("margin", 0.09)),
+                    position=str(sub_cfg.get("position", "bottom")),
+                )
+                print(f"  subs  {srt.name}  {len(cues)} cues  font={font.name if font else 'default'}")
+        else:
+            print(f"  subs  on, but no SRT for {song.stem} (run riplens lyrics)")
 
     feat_track = TrackFeatures(str(song))
     n_frames = int(feat_track.duration * fps)
@@ -78,8 +103,13 @@ def render_song(
             name = names[effect_idx % len(names)]
             fn = REGISTRY[name]
             frame = fn(frame, feat, t, state)
-            frame = geometry_overlay(frame, feat, t)
+            if solids_on and name not in ("solids", "flower", "metatron", "merkaba"):
+                frame = overlay_solids(frame, feat, t)
+            if glyphs_on:
+                frame = overlay_glyphs(frame, feat, t, solids_on)
             frame = grain(frame, 8.0)
+            if burner is not None:
+                frame = burner.apply(frame, t)
             if frame.dtype != "uint8":
                 frame = frame.clip(0, 255).astype("uint8")
             if frame.shape[1] != width or frame.shape[0] != height:
@@ -113,10 +143,13 @@ def render_all(
     ratio: str | None = None,
     song: Path | None = None,
     threshold: float | None = None,
+    subs: bool | None = None,
 ) -> list[Path]:
     cfg = load_config(cfg_path)
     if threshold is not None:
         cfg["threshold"] = threshold
+    if subs is not None:
+        cfg.setdefault("subtitles", {})["enabled"] = bool(subs)
     music_dir = root / cfg["sources"]["music"]
     songs = [song] if song else list_audio(music_dir)
     if not songs:
@@ -133,6 +166,6 @@ def render_all(
             w, h = int(spec["width"]), int(spec["height"])
             dest = out_root / r / f"{s.stem}.mp4"
             print(f"→ {r}  {w}x{h}  {s.name}  encoder={encoder}")
-            render_song(s, plates, dest, w, h, cfg, encoder)
+            render_song(s, plates, dest, w, h, cfg, encoder, root=root)
             written.append(dest)
     return written

@@ -1,4 +1,4 @@
-"""Folder layout: sources/{music,images,videos} → output/{1x1,16x9,9x16}."""
+"""Folder layout: sources/{music,images,videos,lyrics} → output/{1x1,16x9,9x16}."""
 
 from __future__ import annotations
 
@@ -64,6 +64,7 @@ def ensure_layout(root: Path) -> None:
         root / "sources" / "music",
         root / "sources" / "images",
         root / "sources" / "videos",
+        root / "sources" / "lyrics",
         root / "output" / "1x1",
         root / "output" / "16x9",
         root / "output" / "9x16",

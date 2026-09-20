@@ -13,13 +13,14 @@ No generative AI. No network calls at render time. No SaaS APIs.
 **If you change any of the following, you MUST update `skills/glitch-visualizer/SKILL.md` in the same commit:**
 
 - `riplens/effects.py` — any look, blend mode, peel geometry, Julia constants
+- `riplens/glyphs.py` — rune / civilization overlay pack, overlay compositing
 - `riplens/audio.py` — HSV mapping (`h`/`s`/`v` formulas), band edges, RMS normalization
 - `riplens/__init__.py` — `EFFECT_ORDER` or `RATIOS`
-- `config.yaml` defaults for `threshold`, `cooldown`, `effects` list, output sizes
+- `config.yaml` defaults for `threshold`, `cooldown`, `effects` list, `overlays`, `subtitles`, output sizes
 
 The skill is how other people (and other agents) **copy the exact glitch patterns**. A recipe that exists only in Python is a bug.
 
-If you add an eleventh look, append it to `EFFECT_ORDER`, `REGISTRY`, `config.yaml`, the README table, and the skill. Same commit.
+If you add a look, append it to `EFFECT_ORDER`, `REGISTRY`, `config.yaml`, the README table, and the skill. Same commit. Overlay layers live in `glyphs.py` and must stay in lockstep with `src/lib/engine/glyphs.ts`.
 
 ## Do not
 
@@ -31,7 +32,7 @@ If you add an eleventh look, append it to `EFFECT_ORDER`, `REGISTRY`, `config.ya
 
 ## Do
 
-- Keep libraries lightweight: numpy, opencv-python-headless, librosa, soundfile, pyyaml, tqdm, imageio-ffmpeg
+- Keep libraries lightweight: numpy, opencv-python-headless, librosa, soundfile, pyyaml, tqdm, imageio-ffmpeg, pillow
 - Prefer NVENC when `nvidia-smi` works, else libx264 CRF 18
 - Cover-crop art (never stretch)
 - Cycle looks on a **rising-edge RMS threshold**, with cooldown
@@ -42,9 +43,12 @@ If you add an eleventh look, append it to `EFFECT_ORDER`, `REGISTRY`, `config.ya
 ```bash
 riplens doctor
 riplens analyze
+riplens lyrics
+riplens lyrics --force --model small
 riplens render
+riplens render --subs
 riplens render --ratio 9x16
 riplens render --song sources/music/track.wav --threshold 0.7
 ```
 
-Explain those. Do not invent a second CLI.
+`riplens lyrics` is still the same CLI. It writes an editable `sources/lyrics/<stem>.srt`. Never call a cloud transcription API.
