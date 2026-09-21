@@ -23,7 +23,13 @@ def list_audio(root: Path) -> list[Path]:
 
 
 def list_images(root: Path) -> list[Path]:
-    return sorted(p for p in root.iterdir() if p.is_file() and p.suffix.lower() in IMAGE_EXT)
+    if not root.exists():
+        return []
+    return sorted(
+        p
+        for p in root.rglob("*")
+        if p.is_file() and p.suffix.lower() in IMAGE_EXT
+    )
 
 
 def list_videos(root: Path) -> list[Path]:
@@ -32,11 +38,20 @@ def list_videos(root: Path) -> list[Path]:
     return sorted(p for p in root.iterdir() if p.is_file() and p.suffix.lower() in VIDEO_EXT)
 
 
-def read_image(path: Path) -> np.ndarray:
+def read_image(path: Path, max_edge: int = 2048) -> np.ndarray:
     data = np.fromfile(str(path), dtype=np.uint8)
     img = cv2.imdecode(data, cv2.IMREAD_COLOR)
     if img is None:
         raise RuntimeError(f"Could not read image: {path}")
+    h, w = img.shape[:2]
+    edge = max(h, w)
+    if edge > max_edge:
+        scale = max_edge / edge
+        img = cv2.resize(
+            img,
+            (max(1, int(w * scale)), max(1, int(h * scale))),
+            interpolation=cv2.INTER_AREA,
+        )
     return img
 
 

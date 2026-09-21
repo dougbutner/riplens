@@ -6,13 +6,37 @@ import shutil
 import subprocess
 from pathlib import Path
 
+def _has_libx264(ff: str) -> bool:
+    try:
+        out = subprocess.check_output(
+            [ff, "-hide_banner", "-encoders"],
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError, OSError):
+        return False
+    return "libx264" in out
+
+
 def ffmpeg_bin() -> str:
+    candidates: list[str] = []
     found = shutil.which("ffmpeg")
     if found:
-        return found
-    import imageio_ffmpeg
+        candidates.append(found)
+    try:
+        import imageio_ffmpeg
 
-    return imageio_ffmpeg.get_ffmpeg_exe()
+        bundled = imageio_ffmpeg.get_ffmpeg_exe()
+        if bundled:
+            candidates.append(bundled)
+    except Exception:
+        pass
+    for ff in candidates:
+        if _has_libx264(ff):
+            return ff
+    if candidates:
+        return candidates[0]
+    raise RuntimeError("ffmpeg not found")
 
 
 def encoder_name(preference: str = "auto") -> str:
