@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Cut a short proof MP4 from the attached take. No librosa — ffmpeg PCM + OpenCV."""
+"""Cut a short proof MP4. No librosa — ffmpeg PCM + OpenCV."""
 
 from __future__ import annotations
 
+import argparse
 import subprocess
 import sys
 from pathlib import Path
@@ -103,21 +104,40 @@ def hue_shift(img: np.ndarray, deg: float) -> np.ndarray:
     return cv2.cvtColor(np.clip(hsv, 0, 255).astype(np.uint8), cv2.COLOR_HSV2BGR)
 
 
-def render(seconds: float, width: int, height: int, fps: int, dest: Path) -> None:
-    song = ROOT / "sources/music/guatemalan-balcony.mp3"
-    art = ROOT / "sources/images/olympus.jpg"
-    img = cv2.imread(str(art), cv2.IMREAD_COLOR)
+def load_bgr(path: Path) -> np.ndarray:
+    data = np.fromfile(str(path), dtype=np.uint8)
+    img = cv2.imdecode(data, cv2.IMREAD_COLOR)
     if img is None:
-        raise SystemExit(f"missing art {art}")
+        raise SystemExit(f"missing art {path}")
+    return img
+
+
+def render(
+    seconds: float,
+    width: int,
+    height: int,
+    fps: int,
+    dest: Path,
+    song: Path | None = None,
+    images: list[Path] | None = None,
+    use_subs: bool = True,
+) -> None:
+    song = Path(song) if song else ROOT / "sources/music/guatemalan-balcony.mp3"
+    if images:
+        plates = [load_bgr(p) for p in images]
+    else:
+        img = load_bgr(ROOT / "sources/images/olympus.jpg")
+        plates = [img, hue_shift(img, 32), hue_shift(img, -48), hue_shift(img, 160)]
+    if len(plates) == 1:
+        plates = [plates[0], hue_shift(plates[0], 32), hue_shift(plates[0], -48), hue_shift(plates[0], 160)]
     y = pcm(song)
     sr = 22050
     bank = features(y, sr)
-    plates = [img, hue_shift(img, 32), hue_shift(img, -48), hue_shift(img, 160)]
     state = EffectState()
     state.plates = plates
     srt = ROOT / "sources/lyrics" / f"{song.stem}.srt"
     burner = None
-    if srt.is_file():
+    if use_subs and srt.is_file():
         cues = parse_srt(srt)
         font = resolve_font(ROOT, "Montserrat-ExtraBold")
         burner = SubtitleRenderer(cues, font, height)
@@ -199,6 +219,29 @@ def render(seconds: float, width: int, height: int, fps: int, dest: Path) -> Non
     print(f"wrote {dest}  {dest.stat().st_size} bytes")
 
 
+def main() -> None:
+    ap = argparse.ArgumentParser(description="RipLens studio proof renderer")
+    ap.add_argument("--seconds", type=float, default=28)
+    ap.add_argument("--width", type=int, default=720)
+    ap.add_argument("--height", type=int, default=720)
+    ap.add_argument("--fps", type=int, default=24)
+    ap.add_argument("--dest", type=Path, default=ROOT / "output/1x1/preview.mp4")
+    ap.add_argument("--song", type=Path, default=None)
+    ap.add_argument("--image", action="append", default=None)
+    ap.add_argument("--no-subs", action="store_true")
+    args = ap.parse_args()
+    images = [Path(p) for p in args.image] if args.image else None
+    render(
+        seconds=args.seconds,
+        width=args.width,
+        height=args.height,
+        fps=args.fps,
+        dest=args.dest,
+        song=args.song,
+        images=images,
+        use_subs=not args.no_subs,
+    )
+
+
 if __name__ == "__main__":
-    out = Path("/workspace/public/takes/guatemalan-balcony-1x1.mp4")
-    render(seconds=28, width=720, height=720, fps=24, dest=out)
+    main()

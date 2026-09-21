@@ -1,0 +1,1362 @@
+[
+  {
+    "family": "Kihim",
+    "file": "fontshare/Kihim-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Synonym",
+    "file": "fontshare/Synonym-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Gambarino",
+    "file": "fontshare/Gambarino-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Technor",
+    "file": "fontshare/Technor-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Comico",
+    "file": "fontshare/Comico-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Gambetta",
+    "file": "fontshare/Gambetta-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Rowan",
+    "file": "fontshare/Rowan-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "General Sans",
+    "file": "fontshare/GeneralSans-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Sentient",
+    "file": "fontshare/Sentient-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Boska",
+    "file": "fontshare/Boska-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Switzer",
+    "file": "fontshare/Switzer-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Tabular",
+    "file": "fontshare/Tabular-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Tanker",
+    "file": "fontshare/Tanker-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Expose",
+    "file": "fontshare/Expose-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Striper",
+    "file": "fontshare/Striper-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Boxing",
+    "file": "fontshare/Boxing-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Pilcrow Rounded",
+    "file": "fontshare/PilcrowRounded-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Melodrama",
+    "file": "fontshare/Melodrama-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Kohinoor Zerone",
+    "file": "fontshare/KohinoorZerone-Zero.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Zero",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "New Title",
+    "file": "fontshare/NewTitle-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Aktura",
+    "file": "fontshare/Aktura-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Alpino",
+    "file": "fontshare/Alpino-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Amulya",
+    "file": "fontshare/Amulya-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Array",
+    "file": "fontshare/Array-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Author",
+    "file": "fontshare/Author-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bespoke Sans",
+    "file": "fontshare/BespokeSans-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bespoke Serif",
+    "file": "fontshare/BespokeSerif-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bespoke Slab",
+    "file": "fontshare/BespokeSlab-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bespoke Stencil",
+    "file": "fontshare/BespokeStencil-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Clash Grotesk",
+    "file": "fontshare/ClashGrotesk-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Clash Display",
+    "file": "fontshare/ClashDisplay-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Chubbo",
+    "file": "fontshare/Chubbo-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Chillax",
+    "file": "fontshare/Chillax-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Cabinet Grotesk",
+    "file": "fontshare/CabinetGrotesk-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Britney",
+    "file": "fontshare/Britney-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bonny",
+    "file": "fontshare/Bonny-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bevellier",
+    "file": "fontshare/Bevellier-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Archivo",
+    "file": "fontshare/Archivo-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Bebas Neue",
+    "file": "fontshare/BebasNeue-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Poppins",
+    "file": "fontshare/Poppins-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Anton",
+    "file": "fontshare/Anton-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Dancing Script",
+    "file": "fontshare/DancingScript-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Be Vietnam Pro",
+    "file": "fontshare/BeVietnamPro-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "JetBrains Mono",
+    "file": "fontshare/JetBrainsMono-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Oswald",
+    "file": "fontshare/Oswald-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Montserrat",
+    "file": "fontshare/Montserrat-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Manrope",
+    "file": "fontshare/Manrope-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Epilogue",
+    "file": "fontshare/Epilogue-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Plus Jakarta Sans",
+    "file": "fontshare/PlusJakartaSans-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Spline Sans",
+    "file": "fontshare/SplineSans-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Crimson Pro",
+    "file": "fontshare/CrimsonPro-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Azeret Mono",
+    "file": "fontshare/AzeretMono-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Public Sans",
+    "file": "fontshare/PublicSans-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Outfit",
+    "file": "fontshare/Outfit-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Nunito",
+    "file": "fontshare/Nunito-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Lora",
+    "file": "fontshare/Lora-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Fira Sans",
+    "file": "fontshare/FiraSans-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Asap",
+    "file": "fontshare/Asap-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Work Sans",
+    "file": "fontshare/WorkSans-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Familjen Grotesk",
+    "file": "fontshare/FamiljenGrotesk-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Kalam",
+    "file": "fontshare/Kalam-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Panchang",
+    "file": "fontshare/Panchang-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Neco",
+    "file": "fontshare/Neco-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Hind",
+    "file": "fontshare/Hind-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Roundo",
+    "file": "fontshare/Roundo-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Nippo",
+    "file": "fontshare/Nippo-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Pally",
+    "file": "fontshare/Pally-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Hoover",
+    "file": "fontshare/Hoover-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Excon",
+    "file": "fontshare/Excon-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Erode",
+    "file": "fontshare/Erode-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Kola",
+    "file": "fontshare/Kola-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Pencerio",
+    "file": "fontshare/Pencerio-Hairline.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Hairline",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Space Grotesk",
+    "file": "fontshare/SpaceGrotesk-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Paquito",
+    "file": "fontshare/Paquito-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Segment",
+    "file": "fontshare/Segment-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Zodiak",
+    "file": "fontshare/Zodiak-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "RX100",
+    "file": "fontshare/RX100-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Trench Slab",
+    "file": "fontshare/TrenchSlab-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Quilon",
+    "file": "fontshare/Quilon-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Sharpie",
+    "file": "fontshare/Sharpie-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Khand",
+    "file": "fontshare/Khand-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Plein",
+    "file": "fontshare/Plein-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Rajdhani",
+    "file": "fontshare/Rajdhani-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Styro",
+    "file": "fontshare/Styro-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Recia",
+    "file": "fontshare/Recia-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Stardom",
+    "file": "fontshare/Stardom-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Pramukh Rounded",
+    "file": "fontshare/PramukhRounded-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Ranade",
+    "file": "fontshare/Ranade-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Rosaline",
+    "file": "fontshare/Rosaline-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Supreme",
+    "file": "fontshare/Supreme-Extrabold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Extrabold         ",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Zina",
+    "file": "fontshare/Zina-Regular.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Regular",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Satoshi",
+    "file": "fontshare/Satoshi-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Telma",
+    "file": "fontshare/Telma-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "ITF Free Font License",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Red Hat Display",
+    "file": "fontshare/RedHatDisplay-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Sora",
+    "file": "fontshare/Sora-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Literata",
+    "file": "fontshare/Literata-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Merriweather Sans",
+    "file": "fontshare/MerriweatherSans-ExtraBold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Extra Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Quicksand",
+    "file": "fontshare/Quicksand-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Teko",
+    "file": "fontshare/Teko-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Karma",
+    "file": "fontshare/Karma-Bold.ttf",
+    "source": "Fontshare / Indian Type Foundry",
+    "license": "OFL-1.1",
+    "weight": "Bold",
+    "why": "Fontshare \u2014 free for personal and commercial use (video, print, apps)"
+  },
+  {
+    "family": "Inter",
+    "file": "ofl/Inter-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "transcript.lol 2026 / SpotlightFX \u2014 screen captions"
+  },
+  {
+    "family": "Roboto",
+    "file": "ofl/Roboto-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Blitzcut 2026 \u2014 YouTube default caption cousin"
+  },
+  {
+    "family": "Open Sans",
+    "file": "ofl/OpenSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "SpotlightFX 2026 \u2014 workhorse overlays"
+  },
+  {
+    "family": "Lato",
+    "file": "ofl/Lato-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Creative Bloq accessible subtitles"
+  },
+  {
+    "family": "DM Sans",
+    "file": "ofl/DMSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Geometric captions"
+  },
+  {
+    "family": "Barlow",
+    "file": "ofl/Barlow-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Semi-condensed motion captions"
+  },
+  {
+    "family": "Source Serif 4",
+    "file": "ofl/SourceSerif4-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Adobe open serif quotes"
+  },
+  {
+    "family": "IBM Plex Serif",
+    "file": "ofl/IBMPlexSerif-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Editorial serif"
+  },
+  {
+    "family": "IBM Plex Mono",
+    "file": "ofl/IBMPlexMono-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Tech / data captions"
+  },
+  {
+    "family": "Geist",
+    "file": "ofl/Geist-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "Vercel OFL \u2014 modern UI captions"
+  },
+  {
+    "family": "Figtree",
+    "file": "ofl/Figtree-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Friendly geometric captions"
+  },
+  {
+    "family": "Archivo Black",
+    "file": "ofl/ArchivoBlack-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Blitzcut 2026 / TubeLab \u2014 high-energy titles"
+  },
+  {
+    "family": "Atkinson Hyperlegible Next",
+    "file": "ofl/AtkinsonHyperlegibleNext-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Creative Bloq / Braille Institute \u2014 maximum caption accessibility"
+  },
+  {
+    "family": "Atkinson Hyperlegible",
+    "file": "ofl/AtkinsonHyperlegible-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Braille Institute \u2014 accessible subtitles"
+  },
+  {
+    "family": "Bangers",
+    "file": "ofl/Bangers-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "TubeLab YouTuber list \u2014 comic display"
+  },
+  {
+    "family": "Russo One",
+    "file": "ofl/RussoOne-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Sports/motion display, high x-height"
+  },
+  {
+    "family": "Orbitron",
+    "file": "ofl/Orbitron-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Sci-fi / electronic titles"
+  },
+  {
+    "family": "IBM Plex Sans",
+    "file": "ofl/IBMPlexSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Corporate-neutral captions"
+  },
+  {
+    "family": "Source Sans 3",
+    "file": "ofl/SourceSans3-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "SpotlightFX 2026 \u2014 Adobe open caption face"
+  },
+  {
+    "family": "Noto Sans",
+    "file": "ofl/NotoSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "transcript.lol 2026 \u2014 world-script captions"
+  },
+  {
+    "family": "Instrument Sans",
+    "file": "ofl/InstrumentSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Editorial UI captions"
+  },
+  {
+    "family": "Urbanist",
+    "file": "ofl/Urbanist-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Modern geometric, music-video titles"
+  },
+  {
+    "family": "Lexend",
+    "file": "ofl/Lexend-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Designed for reading fluency \u2014 caption readability"
+  },
+  {
+    "family": "Fraunces",
+    "file": "ofl/Fraunces-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Soft serif titles / quotes"
+  },
+  {
+    "family": "Newsreader",
+    "file": "ofl/Newsreader-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Editorial serif titles"
+  },
+  {
+    "family": "Bitter",
+    "file": "ofl/Bitter-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Low-contrast serif captions"
+  },
+  {
+    "family": "Merriweather",
+    "file": "ofl/Merriweather-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Screen serif, long-form captions"
+  },
+  {
+    "family": "Playfair Display",
+    "file": "ofl/PlayfairDisplay-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Blitzcut 2026 \u2014 editorial / luxury titles"
+  },
+  {
+    "family": "Cinzel",
+    "file": "ofl/Cinzel-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Stone-carved display, ritual/myth titles"
+  },
+  {
+    "family": "Abril Fatface",
+    "file": "ofl/AbrilFatface-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Didone poster titles"
+  },
+  {
+    "family": "Black Ops One",
+    "file": "ofl/BlackOpsOne-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Stencil / military display"
+  },
+  {
+    "family": "Bungee",
+    "file": "ofl/Bungee-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Sign-painter display"
+  },
+  {
+    "family": "Fredoka",
+    "file": "ofl/Fredoka-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Round geometric, kid-friendly captions"
+  },
+  {
+    "family": "Karla",
+    "file": "ofl/Karla-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Grotesque captions"
+  },
+  {
+    "family": "Rubik",
+    "file": "ofl/Rubik-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty 2025 study \u2014 #2 short-form caption face"
+  },
+  {
+    "family": "Mulish",
+    "file": "ofl/Mulish-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "News gothic captions"
+  },
+  {
+    "family": "Josefin Sans",
+    "file": "ofl/JosefinSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Geometric vintage titles"
+  },
+  {
+    "family": "Jost",
+    "file": "ofl/Jost-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Futura revival, film titles"
+  },
+  {
+    "family": "Saira",
+    "file": "ofl/Saira-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Semi-condensed motion captions"
+  },
+  {
+    "family": "Exo 2",
+    "file": "ofl/Exo2-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Tech / electronic titles"
+  },
+  {
+    "family": "Chakra Petch",
+    "file": "ofl/ChakraPetch-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Square tech display"
+  },
+  {
+    "family": "Syncopate",
+    "file": "ofl/Syncopate-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Wide futurist titles"
+  },
+  {
+    "family": "Permanent Marker",
+    "file": "ofl/PermanentMarker-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Hand marker captions"
+  },
+  {
+    "family": "Special Elite",
+    "file": "ofl/SpecialElite-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Typewriter captions"
+  },
+  {
+    "family": "Press Start 2P",
+    "file": "ofl/PressStart2P-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Pixel / game titles"
+  },
+  {
+    "family": "VT323",
+    "file": "ofl/VT323-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "CRT / VHS captions"
+  },
+  {
+    "family": "Silkscreen",
+    "file": "ofl/Silkscreen-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Pixel caps"
+  },
+  {
+    "family": "Monoton",
+    "file": "ofl/Monoton-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Neon tube display"
+  },
+  {
+    "family": "Audiowide",
+    "file": "ofl/Audiowide-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Wide techno titles"
+  },
+  {
+    "family": "Pacifico",
+    "file": "ofl/Pacifico-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Brush script"
+  },
+  {
+    "family": "Lobster",
+    "file": "ofl/Lobster-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Classic script titles"
+  },
+  {
+    "family": "Caveat",
+    "file": "ofl/Caveat-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Handwritten captions"
+  },
+  {
+    "family": "Great Vibes",
+    "file": "ofl/GreatVibes-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Formal script"
+  },
+  {
+    "family": "Unbounded",
+    "file": "ofl/Unbounded-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty niche table \u2014 tech/crypto titles"
+  },
+  {
+    "family": "Gabarito",
+    "file": "ofl/Gabarito-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty 2025 study \u2014 #4 short-form caption face"
+  },
+  {
+    "family": "Onest",
+    "file": "ofl/Onest-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty \u2014 education/explainer captions"
+  },
+  {
+    "family": "Nunito Sans",
+    "file": "ofl/NunitoSans-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty \u2014 personal brand captions"
+  },
+  {
+    "family": "Commissioner",
+    "file": "ofl/Commissioner-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty \u2014 calm grotesque"
+  },
+  {
+    "family": "Fira Sans Condensed",
+    "file": "ofl/FiraSansCondensed-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty 2025 study \u2014 #3 short-form caption; sport/motion"
+  },
+  {
+    "family": "PT Sans Narrow",
+    "file": "ofl/PTSansNarrow-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty sport/fitness condensed"
+  },
+  {
+    "family": "Geologica",
+    "file": "ofl/Geologica-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty tech table"
+  },
+  {
+    "family": "Golos Text",
+    "file": "ofl/GolosText-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Monty education captions"
+  },
+  {
+    "family": "Raleway",
+    "file": "ofl/Raleway-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "TubeLab YouTuber list"
+  },
+  {
+    "family": "Alfa Slab One",
+    "file": "ofl/AlfaSlabOne-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Slab poster titles"
+  },
+  {
+    "family": "Staatliches",
+    "file": "ofl/Staatliches-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Condensed gothic titles"
+  },
+  {
+    "family": "Titan One",
+    "file": "ofl/TitanOne-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Heavy comic display"
+  },
+  {
+    "family": "Bowlby One",
+    "file": "ofl/BowlbyOne-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Ultra-bold poster"
+  },
+  {
+    "family": "Big Shoulders Display",
+    "file": "ofl/BigShouldersDisplay-Regular.ttf",
+    "source": "Google Fonts",
+    "license": "OFL-1.1 or Apache-2.0",
+    "weight": "Regular",
+    "why": "Condensed display, Chicago-inspired"
+  },
+  {
+    "family": "Blackout Midnight",
+    "file": "league/BlackoutMidnight.ttf",
+    "source": "The League of Moveable Type",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "The League of Moveable Type \u2014 heavy night display"
+  },
+  {
+    "family": "Knewave",
+    "file": "league/Knewave.ttf",
+    "source": "The League of Moveable Type",
+    "license": "OFL-1.1",
+    "weight": "Regular",
+    "why": "The League of Moveable Type \u2014 brush display"
+  }
+]

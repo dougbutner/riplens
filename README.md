@@ -125,7 +125,7 @@ Accuracy order:
 2. If Demucs is missing: FFmpeg **center-channel extract** (vocals usually sit in the middle of a stereo mix) then the same Whisper pass.
 3. You correct the SRT. The renderer never overwrites an existing SRT unless you pass `--force`.
 
-Subtitle type lives in `fonts/` — 100+ commercial-free families (Fontshare / Indian Type Foundry + article-recommended Google Fonts + League of Moveable Type). Default face is **Montserrat ExtraBold** (the most-used short-form caption in a 2025 2-million-video study). Config:
+Subtitle type lives in [`fonts/`](fonts/) — **170 commercial-free families** (Fontshare / Indian Type Foundry + article-recommended Google Fonts + League of Moveable Type). The `.ttf` files and [`fonts/catalog.json`](fonts/catalog.json) are in this repo so a clone can burn captions without a network. Default face is **Montserrat ExtraBold**. Config:
 
 ```yaml
 subtitles:
@@ -135,7 +135,9 @@ subtitles:
   position: bottom
 ```
 
-Rebuild the font folder with `python3 scripts/collect_fonts.py`.
+Rebuild the font folder (optional) with `python3 scripts/collect_fonts.py`.
+
+The live canvas gate (browser) lives in [`src/lib/engine/`](src/lib/engine/). Same 23 looks, same glyph pack, same HSV map as the Python renderer.
 
 ## Config
 

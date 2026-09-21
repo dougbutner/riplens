@@ -16,9 +16,7 @@ output/**/*.mp4
 !sources/videos/.gitkeep
 !sources/lyrics/.gitkeep
 !sources/lyrics/README.md
-fonts/**/*.ttf
-fonts/**/*.otf
-fonts/catalog.json
+# User media only — caption fonts in fonts/ ARE tracked.
 *.wav
 *.mp3
 *.flac
