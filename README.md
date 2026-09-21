@@ -46,8 +46,9 @@ Optional B-roll in `sources/videos` — frames are sampled as extra plates.
 | `riplens render` | Every song × 1×1, then 16×9, then 9×16 |
 | `riplens render --ratio 9x16` | Reels only |
 | `riplens render --song path.wav` | One track, all three ratios |
-| `riplens lyrics` | Isolate vocals, transcribe locally, write `sources/lyrics/<stem>.srt` |
-| `riplens lyrics --force --model small` | Redo the SRT (default: never overwrite your edits) |
+| `riplens lyrics` | Time `sources/lyrics/<stem>.txt` to the vocal stem → editable SRT |
+| `riplens lyrics --force` | Redo the SRT after you edit the .txt |
+| `riplens lyrics --asr whisper` | Optional audio draft (often wrong on singing) |
 | `riplens render --subs` | Burn the SRT onto the three ratios |
 | `riplens render --no-subs` | Skip captions even if config has them on |
 
@@ -61,7 +62,7 @@ Cursor, CLI, and this README all call the same functions. There is no hidden GUI
 4. **Optional neon overlays** (config `overlays:`):
    - **glyphs** (default on) — stroke-only runes and temple marks, HSV-colored
    - **solids** (default off) — a platonic wireframe in the center; skipped when the current look is already a geometry look
-5. **Optional captions** (`riplens render --subs`) — burn `sources/lyrics/<stem>.srt` with a font from `fonts/`. Edit the SRT in any text editor; the next render uses your words.
+5. **Optional captions** (`riplens render --subs`) — burn `sources/lyrics/<stem>.srt` with a font from `fonts/`. Write the words in the `.txt` first; `riplens lyrics` times them. The renderer will not overwrite your SRT unless you pass `--force`.
 6. **Encode** BGR frames + original audio to H.264 `yuv420p` + AAC, `+faststart`. Plays on YouTube and Instagram.
 
 ## The 23 looks
@@ -109,21 +110,31 @@ Both can be on at once. Glyphs move to an outer ring so they sit around the soli
 
 ## Lyrics / captions (optional)
 
-Local only. No lyric APIs.
+Local only. No lyric APIs. No Whisper required.
+
+Accurate captions start with the **lyric sheet**. Speech-to-text on a rap or a sung line will invent words.
 
 ```
-pip install faster-whisper          # transcriber (CTranslate2). Mac CPU/int8 is fine.
-pip install demucs                  # optional vocal stem. MPS on Apple Silicon.
-riplens lyrics                      # writes sources/lyrics/<stem>.srt + .txt
-# open the .srt, fix any word, save
+# one phrase per line
+sources/lyrics/<stem>.txt
+
+riplens lyrics                 # isolate vocal, time each line, write the SRT
+# open the .srt if a line lands late; fix words in the .txt and --force
 riplens render --subs
 ```
 
-Accuracy order:
+`.lrc` files and ID3 unsynced lyrics tags are used if no `.txt` is present.
 
-1. **Demucs `htdemucs` two-stem vocals** then **faster-whisper `small`/`medium`** on the stem. VAD is off — singing is not speech and VAD drops phrases.
-2. If Demucs is missing: FFmpeg **center-channel extract** (vocals usually sit in the middle of a stereo mix) then the same Whisper pass.
-3. You correct the SRT. The renderer never overwrites an existing SRT unless you pass `--force`.
+Optional vocal stem: `pip install demucs` (Apple Silicon MPS). Without it, FFmpeg extracts the mid channel.
+
+Last-resort audio draft (often wrong on singing):
+
+```
+pip install faster-whisper
+riplens lyrics --asr whisper --force
+```
+
+Treat that `.asr.txt` as a sketch. Replace the `.txt` with the real words and run `riplens lyrics --force`.
 
 Subtitle type lives in [`fonts/`](fonts/) — **170 commercial-free families** (Fontshare / Indian Type Foundry + article-recommended Google Fonts + League of Moveable Type). The `.ttf` files and [`fonts/catalog.json`](fonts/catalog.json) are in this repo so a clone can burn captions without a network. Default face is **Montserrat ExtraBold**. Config:
 
@@ -133,6 +144,7 @@ subtitles:
   font: Montserrat-ExtraBold
   size: 0.052
   position: bottom
+  uppercase: false
 ```
 
 Rebuild the font folder (optional) with `python3 scripts/collect_fonts.py`.

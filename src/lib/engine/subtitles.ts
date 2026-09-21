@@ -42,6 +42,28 @@ export function cueAt(cues: Cue[], t: number): Cue | null {
   return null;
 }
 
+/** Spread a lyric sheet across the take so a .txt can preview before CLI align. */
+export function cuesFromPlain(raw: string, duration: number): Cue[] {
+  const lines = raw
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((s) => s.trim())
+    .filter((s) => s && !s.startsWith("#") && !/-->/.test(s));
+  if (!lines.length || duration <= 0) return [];
+  const weights = lines.map((l) => Math.max(l.length, 8));
+  const total = weights.reduce((a, b) => a + b, 0);
+  const cues: Cue[] = [];
+  let t = duration * 0.03;
+  const span = Math.max(duration * 0.94 - t, 1);
+  for (let i = 0; i < lines.length; i++) {
+    const d = (weights[i]! / total) * span;
+    const end = i === lines.length - 1 ? duration * 0.97 : t + d;
+    cues.push({ start: t, end: Math.max(t + 0.5, end), text: lines[i]! });
+    t = cues[cues.length - 1]!.end;
+  }
+  return cues;
+}
+
 export const CAPTION_FONTS: { id: string; name: string; file: string }[] = [
   { id: "montserrat", name: "Montserrat ExtraBold", file: "/fonts/Montserrat-ExtraBold.ttf" },
   { id: "inter", name: "Inter Bold", file: "/fonts/Inter-Bold.ttf" },
@@ -103,7 +125,7 @@ export function drawSubtitles(
   ctx.font = `700 ${size}px "${fontFamily}", "Montserrat", system-ui, sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
-  const lines = wrapText(ctx, text.toUpperCase(), w * 0.86);
+  const lines = wrapText(ctx, text, w * 0.86);
   const gap = size * 0.18;
   const lineH = size * 1.12;
   const blockH = lines.length * lineH + (lines.length - 1) * gap;

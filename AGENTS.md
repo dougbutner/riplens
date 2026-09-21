@@ -44,11 +44,11 @@ If you add a look, append it to `EFFECT_ORDER`, `REGISTRY`, `config.yaml`, the R
 riplens doctor
 riplens analyze
 riplens lyrics
-riplens lyrics --force --model small
+riplens lyrics --force
 riplens render
 riplens render --subs
 riplens render --ratio 9x16
 riplens render --song sources/music/track.wav --threshold 0.7
 ```
 
-`riplens lyrics` is still the same CLI. It writes an editable `sources/lyrics/<stem>.srt`. Never call a cloud transcription API.
+`riplens lyrics` times `sources/lyrics/<stem>.txt` onto the vocal stem and writes an editable SRT. Never call a cloud transcription API. Whisper is opt-in (`--asr whisper`) and only a draft.

@@ -303,7 +303,8 @@ subtitles:
   margin: 0.09
 ```
 
-`riplens lyrics` writes `sources/lyrics/<stem>.srt` (edit this; never overwrite unless `--force`). `riplens render --subs` burns it after grain so type sits on top of neon. White fill, dark stroke, dim rounded pill. Font resolves inside `fonts/` (100+ commercial-free families). Studio toggle is Captions; timebase is `audio.currentTime()`, not wall clock.
+`riplens lyrics` times `sources/lyrics/<stem>.txt` onto the vocal stem and writes an SRT (edit the .txt for words; never overwrite the SRT unless `--force`). `riplens render --subs` burns it after grain so type sits on top of neon. Fill + dark stroke + dim rounded pill. Default casing is as-written. Font resolves inside `fonts/` (170 commercial-free families). Studio toggle is Captions; timebase is `audio.currentTime()`, not wall clock.
+
 
 Full extraction recipe: `skills/lyrics/SKILL.md`.
 

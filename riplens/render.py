@@ -66,6 +66,7 @@ def render_song(
                     size_frac=float(sub_cfg.get("size", 0.052)),
                     margin_frac=float(sub_cfg.get("margin", 0.09)),
                     position=str(sub_cfg.get("position", "bottom")),
+                    uppercase=bool(sub_cfg.get("uppercase", False)),
                 )
                 print(f"  subs  {srt.name}  {len(cues)} cues  font={font.name if font else 'default'}")
         else:

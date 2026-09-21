@@ -36,8 +36,9 @@ def cmd_doctor(root: Path) -> int:
     print(f"ffmpeg     {ffmpeg_bin()}")
     print(f"encoder    {enc}")
     lyr = lyrics_status()
-    print(f"whisper    {'yes — ' + str(lyr.get('faster_whisper_ver', 'ok')) if lyr['faster_whisper'] else 'no  (pip install faster-whisper)'}")
+    print(f"lyrics     align (drop sources/lyrics/<stem>.txt — no Whisper needed)")
     print(f"demucs     {'yes' if lyr['demucs'] else 'no  (optional: pip install demucs)'}")
+    print(f"whisper    {'yes — ' + str(lyr.get('faster_whisper_ver', 'ok')) + '  (optional draft)' if lyr['faster_whisper'] else 'no  (optional draft: pip install faster-whisper)'}")
     font = resolve_font(root, None)
     print(f"sub font   {font if font else 'none — run python3 scripts/collect_fonts.py'}")
     print(f"songs      {len(music)}")
@@ -87,9 +88,10 @@ def cmd_lyrics(args: argparse.Namespace, root: Path) -> int:
         print("No audio in sources/music")
         return 1
     st = lyrics_status()
-    if not st["faster_whisper"]:
-        print("faster-whisper is not installed. Local, free, no API:")
+    if args.asr in {"whisper", "faster-whisper", "faster_whisper"} and not st["faster_whisper"]:
+        print("faster-whisper is not installed. It is optional and only a draft.")
         print("  pip install faster-whisper")
+        print("Accurate path: put the lyric sheet at sources/lyrics/<stem>.txt and rerun.")
         return 1
     rc = 0
     for s in songs:
@@ -99,7 +101,14 @@ def cmd_lyrics(args: argparse.Namespace, root: Path) -> int:
             continue
         print(f"→ lyrics  {s.name}")
         try:
-            extract_lyrics(s, root, model=args.model, force=args.force)
+            extract_lyrics(
+                s,
+                root,
+                model=args.model,
+                force=args.force,
+                asr=args.asr,
+                text_file=Path(args.text).expanduser() if args.text else None,
+            )
         except Exception as exc:
             print(exc, file=sys.stderr)
             rc = 1
@@ -147,11 +156,17 @@ def build_parser() -> argparse.ArgumentParser:
     r.set_defaults(subs=None)
     ly = sub.add_parser(
         "lyrics",
-        help="Extract vocals → transcribe → write an editable SRT next to the song",
+        help="Time a lyric sheet to the vocal stem and write an editable SRT",
     )
     ly.add_argument("--song", help="Path to one audio file (default: every song in sources/music)")
-    ly.add_argument("--model", default="small", help="faster-whisper model: base, small, medium, large-v3")
+    ly.add_argument("--text", help="Path to a lyrics .txt or .lrc (default: sources/lyrics/<stem>.txt)")
     ly.add_argument("--force", action="store_true", help="Overwrite an existing SRT")
+    ly.add_argument(
+        "--asr",
+        default=None,
+        help="Optional draft from audio: 'whisper' (needs pip install faster-whisper). Default: align a .txt",
+    )
+    ly.add_argument("--model", default="small", help="faster-whisper model if --asr whisper: base, small, medium, large-v3")
     sub.add_parser("init", help="Create sources/ and output/ folders")
     return p
 

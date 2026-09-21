@@ -45,9 +45,9 @@ class Cue:
     text: str
 
 
-def parse_srt(path: Path) -> list[Cue]:
-    raw = path.read_text(encoding="utf-8", errors="replace").replace("\r\n", "\n").replace("\r", "\n")
-    if path.suffix.lower() == ".vtt":
+def parse_srt_text(raw: str) -> list[Cue]:
+    raw = raw.replace("\r\n", "\n").replace("\r", "\n")
+    if raw.lstrip().upper().startswith("WEBVTT"):
         raw = re.sub(r"^WEBVTT.*?\n", "", raw)
     cues: list[Cue] = []
     blocks = re.split(r"\n\s*\n", raw.strip())
@@ -72,6 +72,11 @@ def parse_srt(path: Path) -> list[Cue]:
             continue
         cues.append(Cue(parse_time(m.group(1)), parse_time(m.group(2)), text))
     return cues
+
+
+def parse_srt(path: Path) -> list[Cue]:
+    raw = path.read_text(encoding="utf-8", errors="replace")
+    return parse_srt_text(raw)
 
 
 def write_srt(cues: list[Cue], path: Path) -> None:
@@ -170,10 +175,12 @@ class SubtitleRenderer:
         size_frac: float = 0.052,
         margin_frac: float = 0.09,
         position: str = "bottom",
+        uppercase: bool = False,
     ) -> None:
         self.cues = cues
         self.position = position
         self.margin_frac = margin_frac
+        self.uppercase = uppercase
         self.size = max(18, int(frame_h * size_frac))
         self.stroke = max(3, int(self.size * 0.12))
         self.font: ImageFont.FreeTypeFont | None = None
@@ -207,7 +214,7 @@ class SubtitleRenderer:
         draw = ImageDraw.Draw(img)
         font = self.font
         max_w = int(w * 0.86)
-        wrapped = _wrap(draw, text.upper() if self.size >= 28 else text, font, max_w)
+        wrapped = _wrap(draw, text.upper() if self.uppercase else text, font, max_w)
         bbox = draw.multiline_textbbox((0, 0), wrapped, font=font, align="center", spacing=int(self.size * 0.18))
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
         pad_x = int(self.size * 0.55)

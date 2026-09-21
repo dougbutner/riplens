@@ -53,8 +53,8 @@ overlays:
   solids: false
   glyphs: true
 
-# Off by default. `riplens lyrics` writes sources/lyrics/<stem>.srt
-# (edit that file, then render with --subs). Font names resolve inside fonts/.
+# Off by default. Drop sources/lyrics/<stem>.txt (one phrase per line),
+# run `riplens lyrics`, then `riplens render --subs`. Font names resolve inside fonts/.
 subtitles:
   enabled: false
   file: auto
@@ -62,6 +62,7 @@ subtitles:
   size: 0.052
   position: bottom
   margin: 0.09
+  uppercase: false
 
 codec:
   video: auto          # auto | h264_nvenc | libx264
